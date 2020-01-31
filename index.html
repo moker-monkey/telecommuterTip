@@ -248,7 +248,7 @@
       <h2 class="title"><span>学堂直播早夕会操作手册</span></h2>
       <el-row :gutter="20" class="itemBox">
         <el-col :span="12" class="line bottomLine one leftLine"><div @click="tachUer(1)" class="grid-content bg-purple">用户篇</div></el-col>
-        <el-col :span="12" class="line bottomLine one rightLine><div @click="tachUer(2)" class="grid-content bg-purple">管理员篇</div></el-col>
+        <el-col :span="12" class="line bottomLine one rightLine"><div @click="tachUer(2)" class="grid-content bg-purple">管理员篇</div></el-col>
       </el-row>
     </div>
     <div v-if="userSta">
@@ -440,7 +440,7 @@
           switch(i){
             case 1:
               this.home = false;
-              this.adminSta = true;
+              this.userSta = true;
               break;
             case 2:
               this.home = false;

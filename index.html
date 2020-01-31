@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>操作手册</title>
+  <link rel="stylesheet" href="./static/css/element.css">
+  <link rel="stylesheet" href="./static/css/common.css">
+
+</head>
+<body >
+  <div id="app"  v-cloak>
+    <div v-if="login">
+      <img @click="tachNumber(9)" src="./static/image/break.png" class="brackImg" alt="">
+      <h5 class="itemTilte" style="text-align: center;">登录注册</h5>
+      <div>1、打开腾讯会议</div>
+      <div>2、点击“注册/登录”按钮</div>
+      <div>3、输入中国大陆手机号</div>
+      <div>4、点击“获取验证码”并正确输入</div>
+      <div>5、点击“登录”，如果您是第一次使用，则会要求您设置密码并默认为您创建账号</div>
+      <div style="margin-top:10px"><img class="imgBo" src="https://meeting.qq.com/static/imgs/support/tutorial/2/4.png" alt=""></div>
+    </div>
+    <div v-if="pageInfo">
+      <img @click="tachNumber(9)" src="./static/image/break.png" class="brackImg" alt="">
+      <h5 class="itemTilte" style="text-align: center;">界面介绍</h5>
+      <div>登录成功后，您可看到如下界面 :</div>
+      <div>1、头像：点击头像，您可以对我们填写意见，查看当前版本信息，并可退出当前的登录状态，个人版账号还支持修改手机号码及绑定微信和邮箱</div>
+      <div>2、加入会议：点击加入会议，您可以快速加入一场会议，输入对方发送给您的“9位会议号”您就可以加入该会议中，您可以在下方列表处选择进入会议时，是否默认打开摄像头和麦克风 </div>
+      <div>3、快速会议：点击快速会议，您可立即发起一场会议，不需要填写各种会议信息</div>
+      <div>4、预定会议：点击预定会议，您可以指定会议主题，预设会议召开时间，设定会议密码与地点，并可在预定界面填写被邀请成员信息，上传会议文档和设置成员上传文档权限，填写完毕，点击预定完成系统会自动拉起您的邮箱，给被邀请人发送当前预定会议的邮件</div>
+      <div>5、会议列表：该列表会展示您在今天和今天以后的所有“预定会议”，包含您预定的会议和邀请您参加的预定会议，并按照 预定开始时间>>预定结束时间 进行排序，您可以点击某个会议，即可进入会议详情页，根据您所拥有的权限对该会议进行编辑或者修改，您也可以在此处提前结束您是主持人权限的预定会议</div>
+      <div style="margin-top:10px"><img class="imgBo" src="https://meeting.qq.com/static/imgs/support/tutorial/2/5.png" alt=""></div>
+    </div>
+    <div v-if="typeSta">
+      <img @click="tachNumber(9)" src="./static/image/break.png" class="brackImg" alt="">
+      <h5 class="itemTilte" style="text-align: center;">会议类型</h5>
+      <div>1、快速会议：<br>
+        快速会议又称即时会议，代表您可以立即发起一个会议，快速会议不会在会议列表展示，当您离开会议后，不能在会议列表找到这个会议，但您可以在会议开始一个小时内通过输入会议号加入会议的方式再次回到这个会议，当会议持续一小时后，若会议中无人系统则会主动结束该会议</div>
+      <div>
+        2、预定会议：<br>
+预定会议是指您通过填写预定信息后发起的一个比较偏向正式的会议，您可以在预定会议界面填写“会议主题”、“开始时间”、“结束时间”、“入会密码”、“入会地点”等信息。客户端“会议列表”会为您展示“开始时间”是今天以及今天以后的预定会议 当您的会议到达您设定的“结束时间”以后，系统不会强制结束您的会议，并且所有的预定会议都可以为您保留30天（以预定开始时间为起点），您可以在30天内，随时进入这个会议
+      </div>
+      <h6>静音/解除静音</h6>
+      <div>点击该按钮您可以对麦克风进行操作，管理您现在的语音状态，当您静音是，其他成员无法听到您的讲话</div>
+      <div><img class="imgBo" src="https://meeting.qq.com/static/imgs/support/tutorial/2/6.png" alt=""></div>
+      <h6>开启视频</h6>
+      <div>点击该按钮您可以进行打开摄像头和关闭摄像头操作，点击左上方的“相机”按钮，您可以进行翻转摄像头操作</div>
+      <div><img class="imgBo" src="https://meeting.qq.com/static/imgs/support/tutorial/2/7.jpeg" alt=""></div>
+      
+    </div>
+    <div v-if="pageSta">
+      <img @click="tachNumber(9)" src="./static/image/break.png" class="brackImg" alt="">
+      <h5 class="itemTilte" style="text-align: center;">共享桌面</h5>
+      <div>目前腾讯会议支持移动端和桌面客户端发起共享屏幕，当您点击“共享屏幕”后，便可快速发起共享，在同一时间内，只支持单个人共享屏幕</div>
+      <h6>开始共享屏幕</h6>
+      <div>（1）点击工具栏上的“共享屏幕”按钮</div>
+      <div>（2）选择“开始直播”</div>
+      <div>（3）这时其他成员已经能够看到您的屏幕内容，您选择切换到需要共享的界面即可</div>
+      <div>（4）如果您需要停止共享，点击下方工具栏的“停止共享”按钮即可</div>
+      <div>当您共享屏幕后，工具栏将会在3s后进入沉浸模式，自动隐藏在底部，您需要点击屏幕任意位置方可将其唤出</div>
+      <div><img class="imgBo" src="https://meeting.qq.com/static/imgs/support/tutorial/2/8.png" alt=""></div>
+      
+    </div>
+    <div v-if="personSta">
+      <img @click="tachNumber(9)" src="./static/image/break.png" class="brackImg" alt="">
+      <h5 class="itemTilte" style="text-align: center;">成员/管理成员</h5>
+      <h6>1、当您身份为主持人时</h6>
+      <div>当您的身份为主持人时，按钮文案显示为“管理成员”，您可以点击“管理成员”，通过此功能对会场纪律进行控制</div>
+      <div>1）成员数：上方会显示当前会议内成员数，可帮助您快速统计成员数量 <br>
+        （2）成员列表：成员列表显示当前所有在会议中的成员，您可以对列表中某个成员进行静音/取消静音操作、改名操作、移出会议操作，您也可以在此处将主持人身份移交给某个成员 <br>
+        （3）全体静音：下方可支持您对当前会议内所有成员进行静音操作，您只需要点击“全体静音”即可，当有新成员加入会议时，也会默认被静音，会议内成员若想发言则需要点击“解除静音”举手向您申请，当您同意后，该成员才可发言 <br>
+        （4）解除全体静音：当您想取消全体静音的状态的时候，可点击“解除全体静音”按钮，这时所有成员都可解除静音状态 <br>
+        （5）成员入会时静音：当您希望新加入的成员进入会议时默认静音，可点击右上角的“设置”，勾选“成员入会时静音”<br>
+        （6）允许成员自我解除静音：当您勾选“允许成员自我解除静音”（默认勾选）时，成员可自己解除静音状态，您可取消勾选，这时成员被静音后需要向您发起申请并取得同意后才能解除静音<br>
+        （7）成员进入时播放提示音：当您勾选“成员进入时播放提示音”时，会议内有新成员加入则会发出提示音<br>
+        （8）联席主持人：当您设为其他成员为联席主持人时，这位成员可协助您管理会议，联席主持人可以对成员进行静音、解除静音等操作</div>
+      <h6>2、当您身份为成员时</h6>
+      <div>当您的身份为成员时，按钮文案显示为“成员”，您可以点击“成员”按钮查看当前成员列表，您可以在该列表查看与会成员数量，还可在该界面对自己进行静音/解除静音操作</div>
+      <div><img class="imgBo" src="https://meeting.qq.com/static/imgs/support/tutorial/2/9.png" alt=""></div>
+    </div>
+    <div v-if="saySta">
+      <img @click="tachNumber(9)" src="./static/image/break.png" class="brackImg" alt="">
+      <h5 class="itemTilte" style="text-align: center;">聊天</h5>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;点击“成员/管理成员”按钮，选择聊天Tab即可进入聊天窗口，当您不方便语音或被主持人静音时，您可以在该窗口和会议内其他成员进行沟通交流，目前暂不支持私人聊天功能</div>
+      <div><img class="imgBo" src="https://meeting.qq.com/static/imgs/support/tutorial/2/10.png" alt=""></div>
+    </div>
+    <div v-if="palySta">
+      <img @click="tachNumber(9)" src="./static/image/break.png" class="brackImg" alt="">
+      <h5 class="itemTilte" style="text-align: center;">邀请</h5>
+      <h6>1、复制邀请信息：</h6>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您可在此处复制会议邀请信息，并通过微信、企业微信等即时聊天工具发送给被邀请人，被邀请人即可通过会议号、入会链接、电话拨入等方式加入会议 </div>
+      <div><img class="imgBo" src="https://meeting.qq.com/static/imgs/support/tutorial/2/11.png" alt=""></div>
+    </div>
+    <div v-if="worldSta">
+      <img @click="tachNumber(9)" src="./static/image/break.png" class="brackImg" alt="">
+      <h5 class="itemTilte" style="text-align: center;">会议文档</h5>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;点击该按钮，即可唤出文档窗口，您可以在该窗口创建文档，并且决定是否邀请会中成员协作。可在会议中和其他成员共同协作，您在会后可以在Web个人中心中查看您的文档记录 </div>
+      <div><img class="imgBo" src="https://meeting.qq.com/static/imgs/support/tutorial/2/12.png" alt=""></div>
+    </div>
+
+    <div v-if="home">
+      <h2 class="mTop10" style="text-align: center;">云桌面安装操作手册</h2>
+      <el-row :gutter="20" class="itemBox">
+        <el-col :span="8" class="line bottomLine one leftLine"><div @click="tachIten2(1)" class="grid-content bg-purple">PC端安装</div></el-col>
+        <el-col :span="8" class="line bottomLine one"><div @click="tachIten2(2)" class="grid-content bg-purple">iOS安装</div></el-col>
+        <el-col :span="8" class="line bottomLine one rightLine"><div @click="tachIten2(3)" class="grid-content bg-purple">安卓安装</div></el-col>
+      </el-row>
+    </div>
+    <div v-if="itemPc">
+      <img @click="tachIten2(0)" src="./static/image/break.png" class="brackImg" alt="">
+      <h5 class="itemTilte" style="text-align: center;">PC安装说明</h5>
+      <div><img class="imgBo2" src="./static/image/itemWin.jpg" alt=""></div>
+    </div>
+    <div v-if="itemIos">
+      <img @click="tachIten2(0)" src="./static/image/break.png" class="brackImg" alt="">
+      <h5 class="itemTilte" style="text-align: center;">IOS安装说明</h5>
+      <div><img class="imgBo2" src="./static/image/itemIos.JPG" alt=""></div>
+    </div>
+    <div v-if="itemAnd">
+      <img @click="tachIten2(0)" src="./static/image/break.png" class="brackImg" alt="">
+      <h5 class="itemTilte" style="text-align: center;">安卓安装说明</h5>
+      <div><img class="imgBo2" src="./static/image/itemAndroid.jpg" alt=""></div>
+    </div>
+
+
+    <div v-if="home">
+      <h2 class="mTop10" style="text-align: center;">VPN客户端操作手册 for Win7</h2>
+      <div class="vpnBox">
+        <!-- <el-collapse v-model="activeNames" >
+          <el-collapse-item title="说明信息：" name="1">
+            <div>阅读并参考此文档执行操作时请确保您已满足以下条件，否则部分操作将执行失败或无法执行。</div>
+            <div>
+              1.	登录Win7办公电脑的账号已开通VPN权限且未失效；<br>
+              2.	安装VPN Client的Win7办公电脑；<br>
+              3.	可供办公电脑接入的内网；<br>
+              4.	可供办公电脑接入的外网<br>
+            </div>
+          </el-collapse-item>
+          <el-collapse-item title="操作内容：" name="2">
+            <div>
+              1.	VPN权限申请<br>
+              2.	VPN客户端安装<br>
+              3.	VPN证书注册<br>
+              4.	VPN客户端配置<br>
+              5.	VPN客户端连接<br>
+
+            </div>
+          </el-collapse-item>
+        </el-collapse> -->
+        <div class="item3Box">操作步骤如下说明：</div>
+        <el-row :gutter="20" class="itemBox">
+          <el-col :span="24" class="line one leftLine rightLine"><div @click="tachVpn(1)" class="grid-content bg-purple">1：查询VPN权限是否开通，如已开通且有效跳转至2</div></el-col>
+          <el-col :span="24" class="line one leftLine rightLine" ><div @click="tachVpn(2)" class="grid-content bg-purple">2：查询VPN客户端是否安装，如已安装跳转至3</div></el-col>
+          <el-col :span="24" class="line one leftLine rightLine"><div @click="tachVpn(3)" class="grid-content bg-purple">3：查询VPN证书是否已注册，如已注册跳转至4。</div></el-col>
+          <el-col :span="24" class="line one leftLine rightLine"><div @click="tachVpn(4)" class="grid-content bg-purple">4：查询VPN客户端是否已配置，如已配置跳转至5</div></el-col>
+          <el-col :span="24" class="line one leftLine rightLine bottomLine"><div @click="tachVpn(5)" class="grid-content bg-purple">5：VPN客户端连接</div></el-col>
+        </el-row>
+        <div class="item3Box">服务支持：</div>
+        <div>服务热线： <a href="tel:0755-22626888-1">0755-22626888</a>转1，如您处于纯外网环境（例如客户公司），仅能通过电话提供有限技术支持；</div>
+        <div>服务平台： ITA系统（<a target="_blank" href="http://ita.paic.com.cn">http://ita.paic.com.cn</a te>）搜索关键字“办公电脑故障”上报工单。</div>
+      </div>
+    </div>
+    <div v-if="vpnSta1">
+      <img @click="tachVpn(0)" src="./static/image/break.png" class="brackImg" alt="">
+      <img @click="next(2)" src="./static/image/break.png" class="rightImg" alt="">
+      <h5 class="itemTilte" style="text-align: center;">步骤一</h5>
+      <div>1-1：查询VPN权限是否开通，如已开通且有效跳转至2</div>
+      <div><img class="imgBo2" src="./static/image/vpn11.png" alt=""></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;通过办公电脑浏览器访问ITA系统（http://ita.paic.com.cn），搜索关键字“VPN”提交权限申请工单。</div>
+      <div><img class="imgBo2" src="./static/image/vpn12.png" alt=""></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;普通VPN权限：开通账号在VPN环境下收发邮件，访问公共业务系统（例如EOA），填写如下图左侧。</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;业务VPN权限：开通账号在VPN环境下收发邮件，访问公共业务系统（例如EOA）及特定业务系统权限（前提系统支持VPN访问），填写如下图右侧。</div>
+      <div><img class="imgBo2" src="./static/image/vpn13.png" alt=""></div>
+    </div>
+    <div v-if="vpnSta2">
+      <img @click="tachVpn(0)" src="./static/image/break.png" class="brackImg" alt="">
+      <img @click="next(3)" src="./static/image/break.png" class="rightImg" alt="">
+      <h5 class="itemTilte" style="text-align: center;">步骤二</h5>
+      <div>2-1：查询VPN客户端是否安装，如已安装跳转至3</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;标装电脑默认已安装适与系统版本兼容的客户端，如未安装，请将办公电脑接入内网通过下表对应途径自助安装或联系服务支持。</div>
+      <div><img class="imgBo2" src="./static/image/vpn21.png" alt=""></div>
+    </div>
+    <div v-if="vpnSta3">
+      <img @click="tachVpn(0)" src="./static/image/break.png" class="brackImg" alt="">
+      <img @click="next(4)" src="./static/image/break.png" class="rightImg" alt="">
+
+      <h5 class="itemTilte" style="text-align: center;">步骤三</h5>
+      <div>3-1：查询VPN证书是否已注册，如已注册跳转至4</div>
+      <div><img class="imgBo2" src="./static/image/vpn31.png" alt=""></div>
+      <div>3-2：自动注册证书</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;通常证书会在权限开通后24小时内自动同步至办公电脑（期间电脑需正常连接内网）</div>
+      <div>3-3：手动注册证书。</div>
+      <div><img class="imgBo2" src="./static/image/vpn32.png" alt=""></div>
+      <div><img class="imgBo2" src="./static/image/vpn33.png" alt=""></div>
+    </div>
+    <div v-if="vpnSta4">
+      <img @click="tachVpn(0)" src="./static/image/break.png" class="brackImg" alt="">
+      <img @click="next(5)" src="./static/image/break.png" class="rightImg" alt="">
+
+      <h5 class="itemTilte" style="text-align: center;">步骤四</h5>
+      <div>4-1：查询VPN客户端是否已配置，如已配置跳转至5</div>
+      <div><img class="imgBo2" src="./static/image/vpn41.png" alt=""></div>
+    </div>
+    <div v-if="vpnSta5">
+      <img @click="tachVpn(0)" src="./static/image/break.png" class="brackImg" alt="">
+      <h5 class="itemTilte" style="text-align: center;">步骤五</h5>
+      <div>5-1：VPN客户端连接</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;将办公电脑接入外网，启动VPN客户端进行连接</div>
+      <div><img class="imgBo2" src="./static/image/vpn51.png" alt=""></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;连接成功，VPN客户端自动最小化至任务栏右下角。</div>
+      <div><img class="imgBo2" style="width: 80%;" src="./static/image/vpn52.png" alt=""></div>
+    </div>
+
+
+    <div class="home"  v-if="home">
+      <h2 class="title">
+        <!-- <img src="./logo.png" alt=""> -->
+        <span>腾讯云会议使用手册</span></h2>
+      <el-row>
+        <el-button class="btn" type="primary" @click="tachNumber(0)">下载APP</el-button>
+      </el-row>
+      <h4 style="margin-bottom:0">腾讯云会议详细说明:</h4>
+      <el-row :gutter="20" class="itemBox">
+        <el-col :span="6" class="line one leftLine"><div @click="tachNumber(1)" class="grid-content bg-purple">登陆</div></el-col>
+        <el-col :span="6" class="line one"><div @click="tachNumber(2)" class="grid-content bg-purple">页面介绍</div></el-col>
+        <el-col :span="6" class="line one"><div @click="tachNumber(3)" class="grid-content bg-purple">会议</div></el-col>
+        <el-col :span="6" class="line one  rightLine"><div @click="tachNumber(4)" class="grid-content bg-purple">桌面共享</div></el-col>
+        <el-col :span="6" class="line bottomLine leftLine"><div @click="tachNumber(5)" class="grid-content bg-purple">成员管理</div></el-col>
+        <el-col :span="6" class="line bottomLine"><div @click="tachNumber(6)" class="grid-content bg-purple">聊天</div></el-col>
+        <el-col :span="6" class="line bottomLine "><div @click="tachNumber(7)" class="grid-content bg-purple">邀约</div></el-col>
+        <el-col :span="6" class="line bottomLine rightLine"><div @click="tachNumber(8)" class="grid-content bg-purple">会议文档</div></el-col>
+      </el-row>
+    </div>
+    <div v-if="downApp">
+      <img @click="tachNumber(9)" src="./static/image/break.png" class="brackImg" alt="">
+      <h5 class="itemTilte" style="text-align: center;">下载安装</h5>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;腾讯会议目前已上架国内部分应用市场（AppStore、华为应用商店、魅族应用商店、OPPO应用商店、vivo应用商店、小米应用商店、应用宝等），您可直接在应用市场内搜索“腾讯会议”进行下载，也可扫描下方二维码快速下载安装</div>
+      <h6 class="center color">ios下载</h6>
+      <div><img class="imgBo" src="./static/image/ios.png" alt=""></div>
+      <h6 class="center color" >安卓下载</h6>
+      <div><img class="imgBo" src="./static/image/andrio.png" alt=""></div>
+    </div>
+    <div style="height: 20px;"></div>
+  </div>
+</body >
+  <!-- import Vue before Element -->
+  <script src="./static/js/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="./static/js/element.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: function() {
+        return { 
+          visible: false ,
+          home:true,
+          downApp:false,
+          login:false,
+          pageInfo:false,
+          typeSta:false,
+          pageSta:false,
+          personSta:false,
+          saySta:false,
+          palySta:false,
+          worldSta:false,
+          activeNames: [],
+          itemPc:false,
+          itemIos:false,
+          itemAnd:false,
+          vpnSta1:false,
+          vpnSta2:false,
+          vpnSta3:false,
+          vpnSta4:false,
+          vpnSta5:false,
+        }
+      },
+      methods: {
+        tachNumber(index){
+          let i = Number(index);
+          switch(i){
+            case 0:
+              this.downApp = true;
+              this.home =false;
+              break;
+            case 1:
+              this.login =true;
+              this.home =false;
+
+              break;
+            case 2:
+              this.pageInfo = true;
+              this.home =false;
+
+              break;
+            case 3:
+              this.typeSta = true;
+              this.home = false;
+              break;
+            case 4:
+              this.pageSta = true;
+              this.home = false;
+              break;
+            case 5:
+              this.personSta = true;
+              this.home = false;
+              break;
+            case 6:
+              this.saySta = true;
+              this.home  = false;
+              break;
+            case 7:
+              this.palySta = true;
+              this.home = false;
+              break;
+            case 8:
+              this.worldSta = true;
+              this.home = false;
+              break;
+            default:
+              this.home =true;
+              this.login =false;
+              this.downApp = false;
+              this.pageInfo = false;
+              this.typeSta = false;
+              this.pageSta = false;
+              this.personSta = false;
+              this.saySta = false;
+              this.palySta = false;
+              this.worldSta = false;
+          }
+        },
+        tachIten2(index){
+          let i = Number(index);
+          switch(i){
+            case 1:
+              this.itemPc = true;
+              this.home = false;
+              break;
+            case 2:
+              this.itemIos = true;
+              this.home = false;
+              break;
+            case 3:
+              this.itemAnd = true;
+              this.home = false;
+              break;
+            default:
+              this.home = true;
+              this.itemPc = false;
+              this.itemIos = false;
+              this.itemAnd = false;
+              
+          }
+        },
+        tachVpn(index){
+          let i = Number(index);
+          switch(i){
+            case 1:
+              this.vpnSta1 = true;
+              this.home = false;
+              break;
+            case 2:
+            this.vpnSta2 = true;
+              this.home = false;
+              break;
+            case 3:
+            this.vpnSta3 = true;
+              this.home = false;
+              break;
+            case 4:
+            this.vpnSta4 = true;
+              this.home = false;
+              break;
+            case 5:
+              this.vpnSta5 = true;
+              this.home = false;
+              break;
+           default:
+            this.vpnSta1 = false;
+            this.vpnSta2 = false;
+            this.vpnSta3 = false;
+            this.vpnSta4 = false;
+            this.vpnSta5 = false;
+            this.home = true;
+
+          }
+        },
+        next(index){
+          let i = Number(index);
+          switch(i){
+            case 2:
+            this.vpnSta1 = false;
+            this.vpnSta2 = true;
+              break;
+            case 3:
+            this.vpnSta2 = false;
+            this.vpnSta3 = true;
+              break;
+            case 4:
+            this.vpnSta3 = false;
+            this.vpnSta4 = true;
+              break;
+            case 5:
+            this.vpnSta4 = false;
+            this.vpnSta5 = true;
+              break;
+            default:
+              this.home = true;
+              this.itemPc = false;
+              this.itemIos = false;
+              this.itemAnd = false;
+              
+          }
+        }
+      },
+      
+    })
+  </script>
+</html>

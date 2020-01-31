@@ -241,6 +241,26 @@
       <h6 class="center color" >安卓下载</h6>
       <div><img class="imgBo" src="./static/image/andrio.png" alt=""></div>
     </div>
+
+
+    <!-- 学堂直播操作手册 -->
+    <div class="home" v-if="home">
+      <h2 class="title"><span>学堂直播早夕会操作手册</span></h2>
+      <el-row :gutter="20" class="itemBox">
+        <el-col :span="12" class="line bottomLine one leftLine"><div @click="tachUer(1)" class="grid-content bg-purple">用户篇</div></el-col>
+        <el-col :span="12" class="line bottomLine one rightLine><div @click="tachUer(2)" class="grid-content bg-purple">管理员篇</div></el-col>
+      </el-row>
+    </div>
+    <div v-if="userSta">
+      <img @click="tachUer(0)" src="./static/image/break.png" class="brackImg" alt="">
+      <h5 class="itemTilte" style="text-align: center;">用户篇</h5>
+      <div><img class="imgBo2" src="./static/image/docUser.jpeg" alt=""></div>
+    </div>
+    <div v-if="adminSta">
+      <img @click="tachUer(0)" src="./static/image/break.png" class="brackImg" alt="">
+      <h5 class="itemTilte" style="text-align: center;">管理员篇</h5>
+      <div><img class="imgBo2" src="./static/image/docAdmin.jpeg" alt=""></div>
+    </div>
     <div style="height: 20px;"></div>
   </div>
 </body >
@@ -273,6 +293,8 @@
           vpnSta3:false,
           vpnSta4:false,
           vpnSta5:false,
+          adminSta:false, //学堂直播
+          userSta:false
         }
       },
       methods: {
@@ -411,6 +433,23 @@
               this.itemIos = false;
               this.itemAnd = false;
               
+          }
+        },
+        tachUer(index){
+          let i = Number(index);
+          switch(i){
+            case 1:
+              this.home = false;
+              this.adminSta = true;
+              break;
+            case 2:
+              this.home = false;
+              this.adminSta = true;
+              break;
+            default:
+              this.home = true;
+              this.adminSta = false;
+              this.userSta = false;
           }
         }
       },
